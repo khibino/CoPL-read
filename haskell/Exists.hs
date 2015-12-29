@@ -3,15 +3,8 @@
 {-# LANGUAGE TypeFamilies #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE PolyKinds #-}
-{--# LANGUAGE KindSignatures #-}
-{--# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE TypeOperators #-}
-{--# LANGUAGE ScopedTypeVariables #-}
-{--# LANGUAGE FlexibleInstances #-}
-{--# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE UndecidableInstances #-}
-{--# LANGUAGE AllowAmbiguousTypes #-}
-{--# LANGUAGE FunctionalDependencies #-}
 
 module Exists where
 
