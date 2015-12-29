@@ -22,8 +22,8 @@ data Exists (k' :: k -> *) (p :: k -> *) where
   ExIntro :: k' a -> p a -> Exists k' p
 
 data Plus (n1 :: Nat) (n2 :: Nat) (n3 :: Nat) where
-  PZero :: Nat' n -> Plus Z n n
-  PSucc :: Nat' n1 -> Nat' n2 -> Nat' n3 -> Plus n1 n2 n3 -> Plus (S n1) n2 (S n3)
+  PZero :: Nat' n -> Plus 'Z n n
+  PSucc :: Nat' n1 -> Nat' n2 -> Nat' n3 -> Plus n1 n2 n3 -> Plus ('S n1) n2 ('S n3)
 
 plusExists :: Nat' n1 -> Nat' n2 -> Exists Nat' (Plus n1 n2)
 plusExists Z'       n2 = ExIntro n2 (PZero n2)
