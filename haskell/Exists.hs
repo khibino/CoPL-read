@@ -13,6 +13,8 @@
 {--# LANGUAGE AllowAmbiguousTypes #-}
 {--# LANGUAGE FunctionalDependencies #-}
 
+module Exists where
+
 
 data Nat = Z
          | S Nat deriving (Eq,Ord,Show,Read)
@@ -49,5 +51,3 @@ data NatExists (p :: Nat -> *)  where
 
 -- plusExists' :: Nat' n1 -> Nat' n2 -> NatExists (Plus n1 n2)
 -- plusExists' = undefined
-
-main = undefined
