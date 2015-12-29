@@ -23,5 +23,5 @@ plusExists (S' n1') n2 = case plusExists n1' n2 of
   ExIntro n3' p -> ExIntro (S' n3') (PSucc n1' n2 n3' p)
 
 
-data NatExists (p :: Nat -> *)  where
-  NatExIntro :: Nat' n -> p n -> NatExists p
+-- data NatExists (p :: Nat -> *)  where
+--   NatExIntro :: Nat' n -> p n -> NatExists p
