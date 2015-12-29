@@ -33,6 +33,3 @@ plusExists (S' n1') n2 = case plusExists n1' n2 of
 
 data NatExists (p :: Nat -> *)  where
   NatExIntro :: Nat' n -> p n -> NatExists p
-
--- plusExists' :: Nat' n1 -> Nat' n2 -> NatExists (Plus n1 n2)
--- plusExists' = undefined
