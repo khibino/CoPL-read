@@ -549,12 +549,32 @@ Lemma natExpPlusUnique :
 Proof.
   intros e n1 n2 E1.
   generalize dependent n2.
-  induction E1.
-    (* NE_Value *)
-    intros n2 E2.
-    inversion E2; subst.
-    reflexivity.
-Admitted.
+  induction E1 as
+      [
+      | eL nL eR nR n EL IHE1_L ER IHE1_R PH
+      | eL nL eR nR n EL IHE1_L ER IHE1_R TH ]
+  ; [ (* NE_Value *)
+      intros n2 E2
+      ; inversion E2; subst
+      ; reflexivity
+    | | ].
+
+    (* NE_Plus *)
+    intros n12 EP.
+    inversion EP as [ | eL' nL' eR' nR' n' EL' ER' PH' | ]; subst.
+    rewrite <- (IHE1_L nL' EL') in PH'.
+    rewrite <- (IHE1_R nR' ER') in PH'.
+
+    apply (plusUnique nL nR); assumption.
+
+    (* NE_Times *)
+    intros n12 ET.
+    inversion ET as [ | | eL' nL' eR' nR' n' EL' ER' TH' ]; subst.
+    rewrite <- (IHE1_L nL' EL') in TH'.
+    rewrite <- (IHE1_R nR' ER') in TH'.
+
+    apply (timesUnique nL nR); assumption.
+Qed.
 
 Reserved Notation "e '==>' v" (at level 71, left associativity).
 
@@ -652,6 +672,7 @@ Inductive NatExpMR : NatExp -> NatExp -> Prop :=
  where "e1 '==>*' e2" := (NatExpMR e1 e2)
 .
 
+(* 2.28 *)
 Theorem natExpReduceEval :
   forall e n, e ==>* NE_Value n -> e || n.
 Proof.
