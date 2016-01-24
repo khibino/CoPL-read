@@ -497,7 +497,7 @@ Proof.
 
   split.
   intros H. simpl in H.
-
+Admitted.
 
 
 Lemma timesCoq :
@@ -521,6 +521,7 @@ Inductive EvalNatExp : NatExp -> nat -> Prop :=
 
 Notation "e '||' n" := (EvalNatExp e n) (at level 50, left associativity).
 
+(* 2.15 *)
 Lemma evalNatExpExists :
   forall e, exists n, e || n.
 Proof.
@@ -541,6 +542,7 @@ Proof.
     exists n. apply E_Times with (n1 := n1) (n2 := n2); assumption.
 Qed.
 
+(* 2.16 *)
 Lemma natExpPlusUnique :
   forall e n1 n2,
     e || n1 -> e || n2 -> n1 = n2.
@@ -552,6 +554,7 @@ Proof.
     intros n2 E2.
     inversion E2; subst.
     reflexivity.
+Admitted.
 
 Reserved Notation "e '==>' v" (at level 71, left associativity).
 
@@ -579,6 +582,13 @@ Inductive ReduceNatExp : NatExp -> NatExp -> Prop :=
 
 Print relation.
 
+(* 2.21 *)
+Theorem reduceNatProgressive :
+  forall e, exists e', e ==> e' \/ exists n, e = NE_Value n.
+Proof.
+  (* induction e as [  ]. *)
+  Admitted.
+
 Definition normalForm {X:Type} (R:relation X) (t:X) : Prop :=
   ~ exists t', R t t'.
 
@@ -596,6 +606,7 @@ Proof.
   intros P contra.
   inversion contra. Qed.
 
+(* 2.22 *)
 Theorem reduceNatConfluence :
   forall e1 e2 e3,
     e1 ==> e2 ->

@@ -32,7 +32,7 @@ plusUnique (S' _)  _  (S' _)  Z'      _               k
   = case k of {}
 plusUnique (S' n1) n2 (S' n3) (S' n4) (PSucc _ _ _ j) (PSucc _ _ _ j')
   = eqCong (plusUnique n1 n2 n3 n4 j j')
-plusUnique (S' _)  _  (S' _)  (S' _)  (PSucc  {})      k  {-PZero-}
+plusUnique (S' _)  _  (S' _)  (S' _)  (PSucc  {})     k  {-PZero-}
   = case k of {}
-plusUnique (S' _)  _  (S' _)  (S' _)  j {-PZero-}      _
+plusUnique (S' _)  _  (S' _)  (S' _)  j {-PZero-}     _
   = case j of {}
